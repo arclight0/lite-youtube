@@ -107,7 +107,9 @@ export class LiteYTEmbed extends HTMLElement {
   }
 
   get params(): string {
-    return `start=${this.videoStartAt}&${this.getAttribute('params')}`;
+    const baseParams = `start=${this.videoStartAt}&${this.getAttribute('params')}`;
+    const listParam = this.getAttribute('list');
+    return listParam ? `${baseParams}&list=${listParam}` : baseParams;
   }
 
   set params(opts: string) {
